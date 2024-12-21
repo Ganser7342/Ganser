@@ -8,9 +8,9 @@ module.exports = {
     content: ['./*.html'],
     theme: {
         extend: {
-            backgroundImage: theme => ({
+            backgroundImage: {
                 'Sunset': "url('../images/Sunset.jpg')",
-            }),
+            },
         },
     },
     plugins: [],
