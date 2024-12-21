@@ -1,0 +1,186 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="css/style.css" rel="stylesheet">
+    <title>Home</title>
+</head>
+
+<body class="">
+
+    <!-- Header Image-->
+    <section class="bg-top bg-cover bg-[url('/images/sunset.jpg')] grid place-items-center"  >
+    <img class="inline-block h-[500px] w-[500px] !rounded-full object-cover object-center" src="/images/Main.jpg" alt="">
+    </section>
+    <!-- Header Banner-->
+    <section class="bg-white h-[100px] grid place-content-center">
+        <div class="">
+            <h1 class="text-center text-3xl font-extrabold text-black">John Ganser</h1>
+            <h2 class="text-center">Husband. Father of Four. Technology Innovator.</h2>
+        </div>
+    </section>
+
+    <!-- Link Banner -->
+    <section class="w-full">
+        <ul class="ul_1">
+            <li class="li_1 a"><a href="/build/index.html">Home</a></li>
+            <li class="li_1 a"><a href="/build/contact.html">Contact</a></li>
+            <li class="li_1 a"><a href="/build/about.html">About</a></li>
+          </ul>
+    </section>
+
+    <!--Lafayette Weather-->
+    <section class="lg: basis-1/2 p-5">
+        <div class="border-4 p-4 bg-transparent rounded-3xl">
+                <svg class="w-[0.45in] h-[0.45in] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5V3m0 18v-2M7.05 7.05 5.636 5.636m12.728 12.728L16.95 16.95M5 12H3m18 0h-2M7.05 16.95l-1.414 1.414M18.364 5.636 16.95 7.05M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"/>
+                </svg>
+                <section class="py-2">
+                    <h1 class="font-bold p-3">Lafayette Weather</h1>
+                    <div class="ml-3">
+                        <h2 class="">Current Temperature</h2>
+                        <div class="text-lg" id="temperature">Loading...</div>
+                        <h2>Current Wind Speed</h2>
+                        <div class="text-lg" id="wind">Loading...</div>
+                    </div>
+                </section>
+
+                <script>
+                    // Open-Meteo API URL for current weather (change location as needed)
+                    const apiUrl = "https://api.open-meteo.com/v1/forecast?latitude=40.321111&longitude=-86.865278&current=temperature_2m,precipitation,wind_speed_10m&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&timezone=auto&forecast_days=1";
+            
+
+                        // "https://api.open-meteo.com/v1/forecast?latitude=40.321111&longitude=-86.865278&current_weather=true"
+                    // Fetch data from Open-Meteo API
+                    fetch(apiUrl)
+                        .then(response => response.json())
+                        .then(data => {
+                            // Get the current temperature from the data
+                            const temperature = data.current.temperature_2m;
+
+                            // Get the current wind speed from the data
+                            const wind = data.current.wind_speed_10m;
+            
+                            // Display the temperature on the page
+                            document.getElementById("temperature").textContent = `${temperature}°F`;
+
+                            // Display the wind speed on the page
+                            document.getElementById("wind").textContent = `${wind}MPH`;
+                        })
+                        .catch(error => {
+                            console.error('Error fetching data:', error);
+                            document.getElementById("temperature").textContent = "Failed to load temperature.";
+                            document.getElementById("wind").textContent = "Failed to load wind speed.";
+                        });
+                </script>
+        </div>
+    </section>
+
+    <!--Work History/Skills-->
+    <div class="flex flex-col md:flex-row">
+        <!--Work History Section-->
+        <section class="lg: basis-1/2 p-5">
+            <div class="border-4 p-4 bg-transparent rounded-3xl">
+                    <div>
+                        <svg "http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-[45px] p-[1px]">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 0 0 .75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 0 0-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0 1 12 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 0 1-.673-.38m0 0A2.18 2.18 0 0 1 3 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 0 1 3.413-.387m7.5 0V5.25A2.25 2.25 0 0 0 13.5 3h-3a2.25 2.25 0 0 0-2.25 2.25v.894m7.5 0a48.667 48.667 0 0 0-7.5 0M12 12.75h.008v.008H12v-.008Z" />
+                        </svg>
+                        <h1 class="font-bold">Work History</h1>
+                    </div>
+                        <ul class="font-semibold font-sans space-y-5">
+                            <li class=""><img class="size-10 inline" src="/images/geaerospace_logo.jpg" alt="">GE Aerospace
+                                <ul class="list-none list-inside ml-10">
+                                    <li class="font-normal">Lead Manuf. Engineer</li>
+                                    <li class="font-normal">February 2019 - Present</li>
+                                </ul>
+                            </li>
+                        <li><img class="size-10 inline" src="/images/IAS_logo.jpg" alt="">Ideal Aerial Services
+                                <ul class="list-none list-inside ml-10">
+                                    <li class="font-normal">Owner and Part 107 Pilot</li>
+                                    <li class="font-normal">February 2019 - Present</li>
+                                </ul>
+                        </li>
+                        <li><img class="size-10 inline" src="/images/ideal_power_solutions_logo.jpg" alt="">Ideal Power Solutions
+                            <ul class="list-none list-inside ml-10">
+                                <li class="font-normal">Field Services Engineer</li>
+                                <li class="font-normal">February 2019 - Present</li>
+                            </ul>
+                        </li>
+                        <li><img class="size-10 inline" src="/images/caterpillar_inc_logo.jpg" alt="">Caterpillar
+                            <ul class="list-none list-inside ml-10">
+                                <li class="font-normal">Applications Engineer Practicum</li>
+                                <li class="font-normal">February 2019 - Present</li>
+                            </ul>
+            </div> 
+        </section>
+        <!--Skills Section-->
+        <section class="lg: basis-1/2 p-5">
+            <div class="border-4 p-4 bg-transparent rounded-3xl">
+                <div>
+                    <svg class="w-[0.45in] h-[0.45in] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linejoin="round" stroke-width="2" d="M7.58209 8.96025 9.8136 11.1917l-1.61782 1.6178c-1.08305-.1811-2.23623.1454-3.07364.9828-1.1208 1.1208-1.32697 2.8069-.62368 4.1363.14842.2806.42122.474.73509.5213.06726.0101.1347.0133.20136.0098-.00351.0666-.00036.1341.00977.2013.04724.3139.24069.5867.52125.7351 1.32944.7033 3.01552.4971 4.13627-.6237.8375-.8374 1.1639-1.9906.9829-3.0736l4.8107-4.8108c1.0831.1811 2.2363-.1454 3.0737-.9828 1.1208-1.1208 1.3269-2.80688.6237-4.13632-.1485-.28056-.4213-.474-.7351-.52125-.0673-.01012-.1347-.01327-.2014-.00977.0035-.06666.0004-.13409-.0098-.20136-.0472-.31386-.2406-.58666-.5212-.73508-1.3294-.70329-3.0155-.49713-4.1363.62367-.8374.83741-1.1639 1.9906-.9828 3.07365l-1.7788 1.77875-2.23152-2.23148-1.41419 1.41424Zm1.31056-3.1394c-.04235-.32684-.24303-.61183-.53647-.76186l-1.98183-1.0133c-.38619-.19746-.85564-.12345-1.16234.18326l-.86321.8632c-.3067.3067-.38072.77616-.18326 1.16235l1.0133 1.98182c.15004.29345.43503.49412.76187.53647l1.1127.14418c.3076.03985.61628-.06528.8356-.28461l.86321-.8632c.21932-.21932.32446-.52801.2846-.83561l-.14417-1.1127ZM19.4448 16.4052l-3.1186-3.1187c-.7811-.781-2.0474-.781-2.8285 0l-.1719.172c-.7811.781-.7811 2.0474 0 2.8284l3.1186 3.1187c.7811.781 2.0474.781 2.8285 0l.1719-.172c.7811-.781.7811-2.0474 0-2.8284Z"/>
+                      </svg>
+                      
+                    
+                    <h1 class="font-bold">Skills</h1>
+                    <ul class="list-disc p-5">
+                        <li>Mechanical Engineering</li>
+                        <li>Programming</li>
+                        <li>Project Manangement</li>
+                        <li>Predictive Mantinenance</li>
+                    </ul>
+
+        </section>
+    </div>
+
+    <!--Education Section-->
+    <section class="lg: basis-1/2 p-5">
+    <div class="border-4 p-4 bg-transparent rounded-3xl">
+                <div>
+                    <svg class="w-[0.45in] h-[0.45in] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 4h12M6 4v16M6 4H5m13 0v16m0-16h1m-1 16H6m12 0h1M6 20H5M9 7h1v1H9V7Zm5 0h1v1h-1V7Zm-5 4h1v1H9v-1Zm5 0h1v1h-1v-1Zm-3 4h2a1 1 0 0 1 1 1v4h-4v-4a1 1 0 0 1 1-1Z"/>
+                        </svg>
+                        
+                    <h1 class="font-bold">Education</h1>
+                </div>
+                    <ul class="font-semibold font-sans space-y-5">
+                        <li class=""><img class="size-10 inline" src="/images/purdue_university_logo.jpg" alt="">Purdue University - West Lafayette
+                            <ul class="list-none list-inside ml-10">
+                                <li class="font-normal">Master of Science - Engineering Technology</li>
+                                <li class="font-normal">January 2014-May 2016</li>
+                            </ul>
+                        </li>
+                    <li><img class="size-10 inline" src="/images/purdue_university_logo.jpg" alt="">Purdue University - West Lafayette
+                            <ul class="list-none list-inside ml-10">
+                                <li class="font-normal">Bachelor of Science - Mechanical Engineering Technology</li>
+                                <li class="font-normal">August 2013 - December 2014</li>
+                            </ul>
+                    </li>
+                    <li><img class="size-10 inline" src="/images/ivytech_logo.jpg" alt="">Ivy Tech Community College - Lafayette
+                        <ul class="list-none list-inside ml-10">
+                            <li class="font-normal">Associate of Science - Mechanical Engineering Technology</li>
+                            <li class="font-normal">August 2010 - May 2013</li>
+                        </ul>
+                    </li>
+    </div>
+
+    <!--Footer Icon Links-->
+    <div class="m-6 gap-6 flex place-content-center">
+        <a class="group -m-1 p-1" aria-label="Follow on LinkedIn" href="https://www.linkedin.com/in/ganser/" target="_blank">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"  class="bg-stone-900 h-[24px] w-[24px] fill-white transition group-hover:fill-zinc-600 dark:fill-black dark:group-hover:fill-zinc-300">
+              <path d="M12.51 8.796v1.697a3.738 3.738 0 0 1 3.288-1.684c3.455 0 4.202 2.16 4.202 4.97V19.5h-3.2v-5.072c0-1.21-.244-2.766-2.128-2.766-1.827 0-2.139 1.317-2.139 2.676V19.5h-3.19V8.796h3.168ZM7.2 6.106a1.61 1.61 0 0 1-.988 1.483 1.595 1.595 0 0 1-1.743-.348A1.607 1.607 0 0 1 5.6 4.5a1.601 1.601 0 0 1 1.6 1.606Z" clip-rule="evenodd"/>
+              <path d="M7.2 8.809H4V19.5h3.2V8.809Z"/>
+            </svg>
+        </a>
+        <a class="group -m-1 p-1" aria-label="Follow on YouTube" href="https://www.youtube.com/@idealaerialservices4857" target="_blank">
+          <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="bg-stone-900 h-[24px] w-[24px] fill-white transition group-hover:fill-zinc-600 dark:fill-black dark:group-hover:fill-zinc-300">
+            <path fill-rule="evenodd" d="M21.7 8.037a4.26 4.26 0 0 0-.789-1.964 2.84 2.84 0 0 0-1.984-.839c-2.767-.2-6.926-.2-6.926-.2s-4.157 0-6.928.2a2.836 2.836 0 0 0-1.983.839 4.225 4.225 0 0 0-.79 1.965 30.146 30.146 0 0 0-.2 3.206v1.5a30.12 30.12 0 0 0 .2 3.206c.094.712.364 1.39.784 1.972.604.536 1.38.837 2.187.848 1.583.151 6.731.2 6.731.2s4.161 0 6.928-.2a2.844 2.844 0 0 0 1.985-.84 4.27 4.27 0 0 0 .787-1.965 30.12 30.12 0 0 0 .2-3.206v-1.516a30.672 30.672 0 0 0-.202-3.206Zm-11.692 6.554v-5.62l5.4 2.819-5.4 2.801Z" clip-rule="evenodd"/>
+        </svg>
+        </a>
+    </div>
+</body>
+
+
+
+</html>
